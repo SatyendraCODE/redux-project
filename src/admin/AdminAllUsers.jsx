@@ -6,7 +6,7 @@ import { retieveUsers } from "../actions/users";
 import { selectUser } from "../reducer/users";
 
 const AdminAllUsers = () => {
-  const [allPosts, setAllPosts] = useState({});
+  const [allPosts, setAllPosts] = useState();
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
   const users = useSelector(selectUser);

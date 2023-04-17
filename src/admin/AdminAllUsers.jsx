@@ -11,24 +11,23 @@ const AdminAllUsers = () => {
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
-    console.log("called all user");
+    console.log("called layouteffext");
     fetchAllPostApi();
-  }, [loader]);
+  }, []);
 
   const editdata = (event) => {
     navigate(`/admin/edituser/${event.currentTarget.dataset.id}`);
     console.log("called edit Data");
     // console.log("tr key",event.target.parentNode.parentNode.dataset.id);
   };
-  const deletedata = async (event) => {
-    let delteElementKeyVal = event.target.parentNode.parentNode.dataset.id;
-    let fetchData = await dispatch(deleteUser(event.currentTarget.dataset.id));
-    // console.log(fetchData.payload.data.Code);
+  const deletedata = async (id) => {
+    let fetchData = await dispatch(deleteUser(id));
     if (fetchData.payload.data.Code) {
-      setAllPosts(allPosts.filter((key) => key.id !== delteElementKeyVal));
       // console.log(allPosts);
-      // setLoader(false);
-      // navigate("/admin/allusers");
+      setAllPosts(
+        allPosts.filter((key) => key.id !== id),
+        console.log(allPosts)
+      );
     } else {
       console.log("not deleted");
     }
@@ -36,19 +35,12 @@ const AdminAllUsers = () => {
 
   // const HTMLList =""
   async function fetchAllPostApi(params) {
-    console.log("called printAllPostApi admin");
-    setLoader(true);
+    console.log("called fetchAllPostApi admin");
     let usersData = await dispatch(retieveUsers());
-    setAllPosts(usersData);
-    console.log(allPosts);
-  }
-  const apiLoader = () => {
-    // console.log("jlkfdj");
+    setAllPosts(() => usersData.payload.data.Data);
     setLoader(true);
-  };
-  // const getTarget = (e) => {
-  //   console.log(e.currentTarget);
-  // }
+  }
+
   return (
     <>
       <div className="row">
@@ -68,7 +60,7 @@ const AdminAllUsers = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* {allPosts.payload.data.Data.map((key, val) => {
+                {allPosts.map((key, val) => {
                   return (
                     <tr key={val} data-id={val}>
                       <td>{key.username}</td>
@@ -83,15 +75,19 @@ const AdminAllUsers = () => {
                         <i
                           className="fa-sharp fa-solid fa-trash"
                           data-id={key.id}
-                          onClick={deletedata}
+                          onClick={() => deletedata(key.id)}
                         ></i>
                       </td>
                     </tr>
                   );
-                })} */}
+                }) ?? "allpost loading"}
                 {/* <input type="text" name="" id="" onClick={getTarget} /> */}
-                {JSON.stringify(allPosts)}
-                <button onClick={()=>console.log(allPosts)}>check</button>
+                {/* {JSON.stringify(allPosts)} */}
+                <tr>
+                  <td>
+                    <button onClick={() => console.log(allPosts)}>check</button>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

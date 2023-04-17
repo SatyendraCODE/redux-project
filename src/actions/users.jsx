@@ -22,6 +22,16 @@ export const loginUsers = (UserLoginData)=> async(dispatch)=> {
             console.log(error);
     }   
 }
+export const createUser = ( username, password, email)=> async(dispatch)=> {
+    try {
+        const ResData = await userService.registration(username, password, email);
+        return dispatch({type:"CREATE_USER",payload:ResData})
+        // return dispatch({type:RETRIVE_ALL_USERS,payload:ResData})
+        // console.log(ResData);
+    } catch (error) {
+            console.log(error);
+    }   
+}
 export const userDataGetByID = (UserId)=> async(dispatch)=> {
     try {
         const ResData = await userService.getDatabyId(UserId)

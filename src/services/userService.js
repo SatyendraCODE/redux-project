@@ -9,8 +9,8 @@ const getAll = async ()=>{
 //     // const response = await fetch('http://jigar93776.pythonanywhere.com/item/', {mode:'cors'});
 //     // return response;
 // }
-const Registration = async ()=>{
-    return httpanything.get("http://justjayapi.000webhostapp.com/registration")
+const registration = async (uname, pass, email)=>{
+    return httpanything.post(`http://justjayapi.000webhostapp.com/registration?username=${uname}&password=${pass}&email=${email}`)
     // const response = await fetch('http://jigar93776.pythonanywhere.com/item/', {mode:'cors'});
     // return response;
 }
@@ -25,7 +25,7 @@ const deleteUserData = async (id)=>{
 }
 const UserService = {
     getAll,
-    Registration,
+    registration,
     getDatabyId,
     updateUserData,
     deleteUserData

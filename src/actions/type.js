@@ -1,4 +1,5 @@
 export const RETRIVE_ALL_USERS = "RETRIVE_ALL_USERS";
 export const USERS_LOGIN_DATA = "USERS_LOGIN_DATA";
+export const CREATE_USER = "CREATE_USER";
 export const USERS_ID = "USERS_ID";
 export const DELETE_USERS = "DELETE_USERS";

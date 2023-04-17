@@ -8,18 +8,18 @@ import { retieveUsers } from '../actions/users';
 const AdminDashboard = () => {
   const dispatch = useDispatch();
 
-  useLayoutEffect( () => {
-    console.log("called dash");
-    fetchAllPostApi()
-    // await fetchAllPostApi()
-}, [])
+//   useLayoutEffect( () => {
+//     console.log("called dash");
+//     fetchAllPostApi()
+//     // await fetchAllPostApi()
+// }, [])
 
-  async function fetchAllPostApi(params) {
-    console.log("called fetchAllPostApi dash");
-    // console.log("callde fetchAllPostApi");
-    // const fetchData = await axios.get('http://localhost:5000/posts')
-    // dispatch(retieveUsers());
-  }
+//   async function fetchAllPostApi(params) {
+//     console.log("called fetchAllPostApi dash");
+//     // console.log("callde fetchAllPostApi");
+//     // const fetchData = await axios.get('http://localhost:5000/posts')
+//     // dispatch(retieveUsers());
+//   }
   return (
     <>
       <div className="container-fuild">

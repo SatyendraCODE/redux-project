@@ -32,7 +32,7 @@ const MainRoutes = createBrowserRouter([
         path: "/login",
         element: <Login />,
     }, {
-        path: "/registration",
+        path: "/register",
         element: <Registration />,
     }, {
         path: "/dashboard",

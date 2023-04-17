@@ -41,6 +41,12 @@ const Edituser = () => {
                         <div className="col-6">
                             <input type="text" placeholder='Enter User Name' value={userData.username} className='form-control' name="username" id="username" onChange={(e) => { setUserData({ ...userData, [e.target.name]: e.target.value }) }} />
                         </div>
+                        <div className="col-6">
+                            <input type="text" placeholder='password' value={userData.password} className='form-control' name="password" id="password" onChange={(e) => { setUserData({ ...userData, [e.target.name]: e.target.value }) }} />
+                        </div>
+                        <div className="col-6">
+                            <input type="text" placeholder='email' value={userData.email} className='form-control' name="email" id="email" onChange={(e) => { setUserData({ ...userData, [e.target.name]: e.target.value }) }} />
+                        </div>
                     </div>
                     <div className='row mt-3'>
                         <div className="col-6">

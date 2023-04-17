@@ -10,7 +10,6 @@ const Test = () => {
   ]);
 
   useLayoutEffect(() => {
-    // ;
   }, []);
 
   //   useEffect(()=>{
@@ -33,18 +32,18 @@ const Test = () => {
       <table>
         <tbody>
           {state.map((key, val) => {
-            return (
-              <tr key={val} data-id={val}>
-                <td>{key.username}</td>
-                <td>{key.greeting}</td>
-                <td>
-                  <button className="btn m-1" onClick={() => handleDelete(key.id)}>
-                    delete
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+      return (
+        <tr key={val} data-id={val}>
+          <td>{key.username}</td>
+          <td>{key.greeting}</td>
+          <td>
+            <button className="btn m-1" onClick={() => handleDelete(key.id)}>
+              delete
+            </button>
+          </td>
+        </tr>
+      );
+    })}
         </tbody>
       </table>
     </>

@@ -18,7 +18,7 @@ const AdminDashboard = () => {
     console.log("called fetchAllPostApi dash");
     // console.log("callde fetchAllPostApi");
     // const fetchData = await axios.get('http://localhost:5000/posts')
-    let abc = await dispatch(retieveUsers());
+    // dispatch(retieveUsers());
   }
   return (
     <>

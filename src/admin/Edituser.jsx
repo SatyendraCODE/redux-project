@@ -1,50 +1,35 @@
 import axios from 'axios';
+import {userDataUpdate, userDataGetByID} from '../actions/users'
 import React, { useLayoutEffect, useState } from 'react';
 import { json, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../reducer/users';
+
 
 const Edituser = () => {
     const [loader, setLoader] = useState(false);
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState();
     let { userId } = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    // const users = useSelector(selectUser);
 
     useLayoutEffect(() => {
-        fetchUserDataByIdApi()
-    }, [loader])
-    async function fetchUserDataByIdApi(params) {
-        const fetchData = await axios.get(`http://justjayapi.000webhostapp.com/userdatabyidgetmethod?id=${userId}`)
-            .then(function (response) {
-                setLoader(true)
-                setUserData(response.data.Data[0])
-                //   console.log(response);
-                //   console.log(response.data);
-                //   console.log(response.data.Data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        getUsers()
+    },[loader])
+    async function getUsers() {
+        let data = await dispatch(userDataGetByID(userId));
+        setUserData(data.payload.data.Data[0])
+        setLoader(true);
+
+        console.log(data);
     }
     async function updateUserData(event) {
         event.preventDefault();
         console.log("called update");
         console.log("userData ", userData);
-        // await fetch(`https://justjayapi.000webhostapp.com/updateuser`,{
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //       },
-        //       method: "POST",
-        //       body: JSON.stringify(userData)
-        // }).then((res) => res.json()).then((response) => {
-        //     console.log(response);
-        // })
-        await fetch(`https://justjayapi.000webhostapp.com/updateusergetmethod?id=${userData.id}&username=${userData.username}&password=${userData.password}&gender=${userData.gender}&email=${userData.email}`).then((res) => res.json()).then((response) => {
-            if (response.Code == 1) {
-                navigate("/admin/allusers")
-            } else {
-                alert("Error while updating")
-            }
-        })
+        await dispatch(userDataUpdate(userData));
+        navigate("/admin/allusers");
     }
     return (
         <>

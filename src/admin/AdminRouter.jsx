@@ -5,6 +5,7 @@ import AdminMainPage from './AdminMainPage.jsx';
 import AdminAllUsers from './AdminAllUsers.jsx';
 import AdminAllUsersOrigin from './OnAdminAllUsers.jsx';
 import Edituser from './Edituser';
+import Test from './Test.jsx';
 
 class ClassCompoRouter extends Component {
     render() {
@@ -14,6 +15,7 @@ class ClassCompoRouter extends Component {
                 <Route path="/" element={<AdminDashboard />} >
                     <Route path="dashboard" element={<AdminMainPage />} />
                     <Route path="allusers" element={<AdminAllUsers />} />
+                    <Route path="test" element={<Test />} />
                     <Route path="allusersOrigin" element={<AdminAllUsersOrigin />} />
                     <Route path="edituser/:userId" element={<Edituser />} />
                 </Route>
